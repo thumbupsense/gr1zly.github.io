@@ -20,5 +20,23 @@ var addNotification = function(image){
 	}
 };
 
-pressButton('d', 'keyup', 'next');
+var loadScript = function(url, callback){
+    var head = document.getElementsByTagName('head')[0];
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = url;
+    script.onreadystatechange = callback;
+    script.onload = callback;
+    head.appendChild(script);
+};
+loadScript('http://gr1zly.github.io/js/jquery-1.11.0.min.js', function(){
+	loadScript('http://gr1zly.github.io/js/promise-1.0.0.min.js', function(){
+		loadScript('http://gr1zly.github.io/js/realsense.js', function(){
+			loadScript('http://gr1zly.github.io/js/realsenseinfo.js', function(){
+				console.log('scripts loaded');
+			});	
+		});
+	});
+});
+//pressButton('d', 'keyup', 'next');
 })();
