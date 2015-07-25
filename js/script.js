@@ -150,7 +150,7 @@
 	var doSomeAwesomeStuff = function(){
 		console.log("blah");
 		//pressButton('d', 'keyup', 'next');
-		startIntelSense(window.location.href);
+		setTimeout(startIntelSense(window.location.href), 2000);
 	};
 
 	if (window.jQuery) {
