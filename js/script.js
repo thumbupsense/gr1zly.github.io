@@ -188,19 +188,12 @@
 		head.appendChild(script);
 	};
 
-<<<<<<< HEAD
 	var doSomeAwesomeStuff = function() {
+		loadCss();
 		var url = window.location.href;
 		if (url.indexOf('pikabu') != -1)
 			setTimeout(pressButton('d', 'keyup'),1000);
 
-=======
-	var doSomeAwesomeStuff = function(){
-		console.log("blah");
-		loadCss();
-		//pressButton('d', 'keyup', 'next');
-		setTimeout(pressButton('d', 'keyup'),1000);
->>>>>>> 005153f17858c18213f8a8e0629c5dcf38375459
 		setTimeout(startIntelSense(window.location.href), 2000);
 	};	
 
