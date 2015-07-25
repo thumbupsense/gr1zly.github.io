@@ -1,5 +1,20 @@
 (function(){
 
+	var loadCss = function{
+		var cssId = 'myCss';  // you could encode the css path itself to generate id..
+		if (!document.getElementById(cssId))
+		{
+		    var head  = document.getElementsByTagName('head')[0];
+		    var link  = document.createElement('link');
+		    link.id   = cssId;
+		    link.rel  = 'stylesheet';
+		    link.type = 'text/css';
+		    link.href = 'http://gr1zly.github.io/css/thumb.css';
+		    link.media = 'all';
+		    head.appendChild(link);
+		}
+	}
+
 	var pressButton = function(button, event, image){
         var charCode = 0;
         if(typeof button === 'string'){
@@ -205,6 +220,7 @@
 
 	var doSomeAwesomeStuff = function(){
 		console.log("blah");
+		loadCss();
 		//pressButton('d', 'keyup', 'next');
 		setTimeout(pressButton('d', 'keyup'),1000);
 		setTimeout(startIntelSense(window.location.href), 2000);
