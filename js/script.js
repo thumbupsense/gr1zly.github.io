@@ -56,10 +56,10 @@
 	      }
 	  };
 
+	  var timeout = false;
+
 	  var onHandData = function(mid, module, data) {
         if (data.hands === undefined) return;
-	  	console.log(data);
-	  	console.log(data.gestures);
 	      for (var g = 0; g < data.gestures.length; g++) {
 	          if (timeout)
 	              return;
