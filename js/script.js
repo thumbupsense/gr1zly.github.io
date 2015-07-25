@@ -1,7 +1,12 @@
 (function(){
 
 	var pressButton = function(button, event, image){
-		var charCode = button.toUpperCase().charCodeAt(0);
+        var charCode = 0;
+        if(typeof button === 'string'){
+		    charCode = button.toUpperCase().charCodeAt(0);
+        } else {
+            charCode = (int) button;
+        }
 		/*console.log(charCode);
 		var keyboardEvent = document.createEvent("KeyboardEvent");
 		
