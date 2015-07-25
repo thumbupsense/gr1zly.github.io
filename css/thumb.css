@@ -4,5 +4,14 @@
     left:30%;
     width:400px;
     height:400px;
-    display:block; 
+    display:block;
+    -webkit-transition: opacity 3s ease-in-out;
+    -moz-transition: opacity 3s ease-in-out;
+    -ms-transition: opacity 3s ease-in-out;
+    -o-transition: opacity 3s ease-in-out;
+     opacity: 1; 
+}
+
+#thumb_up_div.hide-opacity{
+    opacity: 0;
 }
