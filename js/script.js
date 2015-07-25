@@ -11,16 +11,25 @@
 		addNotification(image);
 	};
 
+	var addNotification = function(image){
+		if(image != null){
+			var thumb_up_div = document.createElement('div');
+			thumb_up_div.id = 'thumb_up_div';  
+			thumb_up_div.style.cssText = 'position:fixed;top:100px;left:30%;width:400px;height:400px;display:block; background: url("http://gr1zly.github.io/images/'+image+'.png") no-repeat;}';
+			document.body.appendChild(thumb_up_div);
+			setTimeout(function(){ document.body.removeChild(thumb_up_div); }, 1000);
+		}
+	};
+
 	var pikabu = function(action) {
 	  switch (action) {
 	    case "thumb_up":
-	     pressButton('')
 	      pressButton('w', 'keydown', 'thumbup');
-	      pressButton('d', 'keyup');
+	      setTimeout(pressButton('d', 'keyup'), 500);
 	      break;
 	    case "thumb_down":
 	      pressButton('s', 'keydown', 'thumbdown');
-	      pressButton('d', 'keyup');
+	      setTimeout(pressButton('d', 'keyup'), 500);
 	      break;
 	    case "slide_left":
 	      pressButton('a', 'keyup', 'prev');
@@ -148,15 +157,7 @@
 	  });
 	};
 
-	var addNotification = function(image){
-		if(image != null){
-			var thumb_up_div = document.createElement('div');
-			thumb_up_div.id = 'thumb_up_div';  
-			thumb_up_div.style.cssText = 'position:fixed;top:100px;left:30%;width:400px;height:400px;display:block; background: url("http://gr1zly.github.io/images/'+image+'.png") no-repeat;}';
-			document.body.appendChild(thumb_up_div);
-			setTimeout(function(){ document.body.removeChild(thumb_up_div); }, 1000);
-		}
-	};
+
 
 	var loadScript = function(url, callback){
 	    var head = document.getElementsByTagName('head')[0];
@@ -171,7 +172,7 @@
 	var doSomeAwesomeStuff = function(){
 		console.log("blah");
 		//pressButton('d', 'keyup', 'next');
-		pressButton('d', 'keyup');
+		setTimeout(pressButton('d', 'keyup'),1000);
 		setTimeout(startIntelSense(window.location.href), 2000);
 	};
 
