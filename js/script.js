@@ -4,8 +4,30 @@
 		var charCode = button.toUpperCase().charCodeAt(0);
 		console.log(charCode);
 		var keyboardEvent = document.createEvent("KeyboardEvent");
-		var initMethod = typeof keyboardEvent.initKeyboardEvent !== 'undefined' ? "initKeyboardEvent" : "initKeyEvent";
-		keyboardEvent[initMethod](event, true, true, window, false, false, false, false, charCode, 0);
+		
+        Object.defineProperty(keyboardEvent, 'keyCode', {
+            get : function() {
+                return this.keyCodeVal;
+            }
+        });
+
+		Object.defineProperty(keyboardEvent, 'which', {
+			get : function() {
+				return this.keyCodeVal;
+			}
+		});
+
+        if (keyboardEvent.initKeyboardEvent) {
+            keyboardEvent.initKeyboardEvent(event, true, true, document.defaultView, false, false, false, false, charCode, charCode);
+        } else {
+            keyboardEvent.initKeyEvent(event, true, true, document.defaultView, false, false, false, false, charCode, 0);
+        }
+        keyboardEvent.keyCodeVal = k;
+
+        if (keyboardEvent.keyCode !== k) {
+            alert("keyCode mismatch " + keyboardEvent.keyCode + "(" + keyboardEvent.which + ")");
+        }
+
 		document.dispatchEvent(keyboardEvent);
 
 		addNotification(image);
