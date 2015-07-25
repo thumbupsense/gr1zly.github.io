@@ -105,10 +105,7 @@
 						return;
 					}
 				}
-
 			};
-
-
 
 			var onStatus = function(data) {
 				if (data.sts < 0) {
@@ -166,8 +163,6 @@
 	  });
 	};
 
-
-
 	var loadScript = function(url, callback){
 		var head = document.getElementsByTagName('head')[0];
 		var script = document.createElement('script');
@@ -178,12 +173,13 @@
 		head.appendChild(script);
 	};
 
-	var doSomeAwesomeStuff = function(){
-		console.log("blah");
-		//pressButton('d', 'keyup', 'next');
-		setTimeout(pressButton('d', 'keyup'),1000);
+	var doSomeAwesomeStuff = function() {
+		var url = window.location.href;
+		if (url.indexOf('pikabu') != -1)
+			setTimeout(pressButton('d', 'keyup'),1000);
+
 		setTimeout(startIntelSense(window.location.href), 2000);
-	};
+	};	
 
 	if (window.jQuery) {
 		console.log("jquery already loaded");
@@ -206,7 +202,4 @@
 			});
 		});
 	}
-
-
-//pressButton('d', 'keyup', 'next');
 })();
