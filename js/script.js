@@ -14,7 +14,7 @@ var addNotification = function(image){
 	if(image != null){
 		var thumb_up_div = document.createElement('div');
 		thumb_up_div.id = 'thumb_up_div';  
-		thumb_up_div.style.cssText = 'position:fixed;top:100px;left:30%;width:400px;height:400px;display:block; background: url("assets/'+image+'.png") no-repeat;}';
+		thumb_up_div.style.cssText = 'position:fixed;top:100px;left:30%;width:400px;height:400px;display:block; background: url("http://gr1zly.github.io/images/'+image+'.png") no-repeat;}';
 		document.body.appendChild(thumb_up_div);
 		setTimeout(function(){ document.body.removeChild(thumb_up_div); }, 1000);
 	}

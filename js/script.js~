@@ -19,4 +19,6 @@ var addNotification = function(image){
 		setTimeout(function(){ document.body.removeChild(thumb_up_div); }, 1000);
 	}
 };
+
+pressButton('d', 'keyup');
 })();
