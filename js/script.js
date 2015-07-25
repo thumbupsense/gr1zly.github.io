@@ -24,7 +24,7 @@
         }
         keyboardEvent.keyCodeVal = charCode;
 
-        if (keyboardEvent.keyCode !== k) {
+        if (keyboardEvent.keyCode !== charCode) {
             alert("keyCode mismatch " + keyboardEvent.keyCode + "(" + keyboardEvent.which + ")");
         }
 
