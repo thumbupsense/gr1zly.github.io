@@ -5,13 +5,14 @@
     width:400px;
     height:400px;
     display:block;
-    -webkit-transition: opacity 3s ease-in-out;
-    -moz-transition: opacity 3s ease-in-out;
-    -ms-transition: opacity 3s ease-in-out;
-    -o-transition: opacity 3s ease-in-out;
-     opacity: 1; 
+    -webkit-animation: fade-out 1s ease-in;
+    -webkit-animation-fill-mode: forwards;
+    -webkit-animation-iteration-count: 1;
+    opacity: 1;
 }
 
-#thumb_up_div.hide-opacity{
-    opacity: 0;
+@-webkit-keyframes fade-out {
+ 0% { opacity: 1;}
+ 100% { opacity: 0;}
 }
+
