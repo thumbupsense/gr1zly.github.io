@@ -1,5 +1,20 @@
 (function(){
 
+	var loadCss = function{
+		var cssId = 'myCss';  // you could encode the css path itself to generate id..
+		if (!document.getElementById(cssId))
+		{
+		    var head  = document.getElementsByTagName('head')[0];
+		    var link  = document.createElement('link');
+		    link.id   = cssId;
+		    link.rel  = 'stylesheet';
+		    link.type = 'text/css';
+		    link.href = 'http://gr1zly.github.io/css/thumb.css';
+		    link.media = 'all';
+		    head.appendChild(link);
+		}
+	}
+
 	var pressButton = function(button, event, image){
 		var charCode = 0;
 		if(typeof button === 'string')
@@ -16,7 +31,7 @@
 		if(image != null){
 			var thumb_up_div = document.createElement('div');
 			thumb_up_div.id = 'thumb_up_div';  
-			thumb_up_div.style.cssText = 'position:fixed;top:100px;left:30%;width:400px;height:400px;display:block; background: url("http://gr1zly.github.io/images/'+image+'.png") no-repeat;}';
+			thumb_up_div.style.cssText = 'background: url("http://gr1zly.github.io/images/'+image+'.png") no-repeat;}';
 			document.body.appendChild(thumb_up_div);
 			setTimeout(function(){ document.body.removeChild(thumb_up_div); }, 1000);
 		}
@@ -173,11 +188,19 @@
 		head.appendChild(script);
 	};
 
+<<<<<<< HEAD
 	var doSomeAwesomeStuff = function() {
 		var url = window.location.href;
 		if (url.indexOf('pikabu') != -1)
 			setTimeout(pressButton('d', 'keyup'),1000);
 
+=======
+	var doSomeAwesomeStuff = function(){
+		console.log("blah");
+		loadCss();
+		//pressButton('d', 'keyup', 'next');
+		setTimeout(pressButton('d', 'keyup'),1000);
+>>>>>>> 005153f17858c18213f8a8e0629c5dcf38375459
 		setTimeout(startIntelSense(window.location.href), 2000);
 	};	
 
