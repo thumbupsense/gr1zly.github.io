@@ -57,6 +57,8 @@
 	  };
 
 	  var onHandData = function(mid, module, data) {
+	  	console.log(data);
+	  	console.log(data.gestures);
 	      for (var g = 0; g < data.gestures.length; g++) {
 	          if (timeout)
 	              return;
