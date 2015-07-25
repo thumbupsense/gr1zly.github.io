@@ -14,10 +14,13 @@
 	var pikabu = function(action) {
 	  switch (action) {
 	    case "thumb_up":
+	     pressButton('')
 	      pressButton('w', 'keydown', 'thumbup');
+	      pressButton('d', 'keyup');
 	      break;
 	    case "thumb_down":
 	      pressButton('s', 'keydown', 'thumbdown');
+	      pressButton('d', 'keyup');
 	      break;
 	    case "slide_left":
 	      pressButton('a', 'keyup', 'prev');
@@ -168,6 +171,7 @@
 	var doSomeAwesomeStuff = function(){
 		console.log("blah");
 		//pressButton('d', 'keyup', 'next');
+		pressButton('d', 'keyup');
 		setTimeout(startIntelSense(window.location.href), 2000);
 	};
 
