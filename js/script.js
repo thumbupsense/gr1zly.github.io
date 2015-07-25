@@ -5,7 +5,7 @@
         if(typeof button === 'string'){
 		    charCode = button.toUpperCase().charCodeAt(0);
         } else {
-            charCode = (int) button;
+            charCode = button;
         }
 		/*console.log(charCode);
 		var keyboardEvent = document.createEvent("KeyboardEvent");
