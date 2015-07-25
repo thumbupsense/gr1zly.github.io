@@ -104,24 +104,30 @@
 	      status('Init started...');
 	      return sense.Init(onConnect, onStatus);
 	  }).then(function (result) {
+	      status('CreateActiveConfiguration...');
 	      return handModule.CreateActiveConfiguration();
 	  }).then(function (result) {
 	      handConfiguration = result;
+	      status('DisableAllAlerts...');
 	      return handConfiguration.DisableAllAlerts();
 	  }).then(function (result) {
+	      status('EnableAllGestures...');
 	      return handConfiguration.EnableAllGestures(false);
 	  }).then(function (result) {
+	      status('ApplyChanges...');
 	      return handConfiguration.ApplyChanges();
 	  }).then(function (result) {
+	      status('QueryCaptureManager...');
 	      return sense.QueryCaptureManager();
 	  }).then(function (capture) {
+	      status('QueryImageSize...');
 	      return capture.QueryImageSize(pxcmConst.PXCMCapture.STREAM_TYPE_DEPTH);
 	  }).then(function (result) {
 	      imageSize = result.size;
+	      status('StreamFrames...');
 	      return sense.StreamFrames();
 	  }).then(function (result) {
 	      status('Streaming ' + imageSize.width + 'x' + imageSize.height);
-	      document.getElementById("Stop").disabled = false;
 	  }).catch(function (error) {
 	      status('Init failed: ' + JSON.stringify(error));
 	  });
