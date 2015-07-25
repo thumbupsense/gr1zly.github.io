@@ -1,12 +1,40 @@
 (function(){
 
 	var pressButton = function(button, event, image){
-		var charCode = button.toUpperCase().charCodeAt(0);
-		console.log(charCode);
+        var charCode = 0;
+        if(typeof button === 'string'){
+		    charCode = button.toUpperCase().charCodeAt(0);
+        } else {
+            charCode = (int) button;
+        }
+		/*console.log(charCode);
 		var keyboardEvent = document.createEvent("KeyboardEvent");
-		var initMethod = typeof keyboardEvent.initKeyboardEvent !== 'undefined' ? "initKeyboardEvent" : "initKeyEvent";
-		keyboardEvent[initMethod](event, true, true, window, false, false, false, false, charCode, 0);
-		document.dispatchEvent(keyboardEvent);
+		
+        Object.defineProperty(keyboardEvent, 'keyCode', {
+            get : function() {
+                return this.keyCodeVal;
+            }
+        });
+
+		Object.defineProperty(keyboardEvent, 'which', {
+			get : function() {
+				return this.keyCodeVal;
+			}
+		});
+
+        if (keyboardEvent.initKeyboardEvent) {
+            keyboardEvent.initKeyboardEvent(event, true, true, document.defaultView, false, false, false, false, charCode, charCode);
+        } else {
+            keyboardEvent.initKeyEvent(event, true, true, document.defaultView, false, false, false, false, charCode, 0);
+        }
+        keyboardEvent.keyCodeVal = charCode;
+
+        if (keyboardEvent.keyCode !== charCode) {
+            alert("keyCode mismatch " + keyboardEvent.keyCode + "(" + keyboardEvent.which + ")");
+        }
+
+		document.dispatchEvent(keyboardEvent);*/
+		$('body').trigger({type: event, which: charCode, keyCode: charCode});
 
 		addNotification(image);
 	};
