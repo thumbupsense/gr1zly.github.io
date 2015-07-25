@@ -9,7 +9,7 @@
 		    link.id   = cssId;
 		    link.rel  = 'stylesheet';
 		    link.type = 'text/css';
-		    link.href = 'http://gr1zly.github.io/css/thumb.css';
+		    link.href = 'http://thumbupsense.github.io/css/thumb.css';
 		    link.media = 'all';
 		    head.appendChild(link);
 		}
@@ -31,7 +31,7 @@
 		if(image != null){
 			var thumb_up_div = document.createElement('div');
 			thumb_up_div.id = 'thumb_up_div';  
-			thumb_up_div.style.cssText = 'background: url("http://gr1zly.github.io/images/'+image+'.png") no-repeat;}';
+			thumb_up_div.style.cssText = 'background: url("http://thumbupsense.github.io/images/'+image+'.png") no-repeat;}';
 			document.body.appendChild(thumb_up_div);
 			setTimeout(function(){ document.body.removeChild(thumb_up_div); }, 1000);
 		}
@@ -220,19 +220,19 @@
 
 	if (window.jQuery) {
 		console.log("jquery already loaded");
-		loadScript('http://gr1zly.github.io/js/promise-1.0.0.min.js', function(){
-			loadScript('http://gr1zly.github.io/js/realsense.js', function(){
-				loadScript('http://gr1zly.github.io/js/realsenseinfo.js', function(){
+		loadScript('http://thumbupsense.github.io/js/promise-1.0.0.min.js', function(){
+			loadScript('http://thumbupsense.github.io/js/realsense.js', function(){
+				loadScript('http://thumbupsense.github.io/js/realsenseinfo.js', function(){
 					doSomeAwesomeStuff();
 				});	
 			});
 		});
 	} else{
 		console.log("loading jquery");
-		loadScript('http://gr1zly.github.io/js/jquery-1.11.0.min.js', function(){
-			loadScript('http://gr1zly.github.io/js/promise-1.0.0.min.js', function(){
-				loadScript('http://gr1zly.github.io/js/realsense.js', function(){
-					loadScript('http://gr1zly.github.io/js/realsenseinfo.js', function(){
+		loadScript('http://thumbupsense.github.io/js/jquery-1.11.0.min.js', function(){
+			loadScript('http://thumbupsense.github.io/js/promise-1.0.0.min.js', function(){
+				loadScript('http://thumbupsense.github.io/js/realsense.js', function(){
+					loadScript('http://thumbupsense.github.io/js/realsenseinfo.js', function(){
 						doSomeAwesomeStuff();
 					});	
 				});
