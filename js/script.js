@@ -85,6 +85,22 @@
 			return true; 
 		};
 
+		var ninegag = function(action) {
+		switch (action) {
+			case "thumb_up":
+			pressButton('l', 'keydown', 'thumbup');
+			setTimeout(pressButton('j', 'keyup'), 1000);
+			break;
+			case "thumb_down":
+			pressButton('h', 'keydown', 'thumbdown');
+			setTimeout(pressButton('j', 'keyup'), 1000);
+			break;
+			default:
+			return false;
+		}
+		return true;
+	};
+
 		var startIntelSense = function(url) {
 			var onConnect = function(data) {
 				if (data.connected == false) {
@@ -110,6 +126,11 @@
 						return;
 					}
 					else if (url.indexOf('imgur') != -1 && imgur(data.gestures[g].name)){
+						timeout = true;
+						setTimeout(clearTimeout, 1000);
+						return;
+					}
+					else if (url.indexOf('9gag') != -1 && ninegag(data.gestures[g].name)){
 						timeout = true;
 						setTimeout(clearTimeout, 1000);
 						return;
