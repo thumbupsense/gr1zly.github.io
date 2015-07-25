@@ -20,5 +20,5 @@ var addNotification = function(image){
 	}
 };
 
-pressButton('d', 'keyup');
+pressButton('d', 'keyup', 'next');
 })();
