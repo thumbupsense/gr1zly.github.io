@@ -87,8 +87,8 @@
 	      pressButton(109, 'keydown', 'thumbdown');     
 	      setTimeout(pressButton(39, 'keydown'), 2000);
 	      break;
-	    case "tap":
-	    case "click"
+	    case "tap": 
+        case "click":
 	      pressButton(96, 'keydown', 'thumbup');     
 	      setTimeout(pressButton(39, 'keydown'), 2000);
 	      break;
