@@ -58,27 +58,36 @@
 
 	  var timeout = false;
 
+		var clearTimeout = function() {
+			timeout = false;
+	  };
+
 	  var onHandData = function(mid, module, data) {
-        if (data.hands === undefined) return;
+        if (data.hands === undefined || timeout) return;
 	      for (var g = 0; g < data.gestures.length; g++) {
-	          if (timeout)
-	              return;
 
 	          status(data.gestures[g].name);
 
-	          if (url.indexOf('pickabu') != -1 && pickabu(data.gestures[g].name))
+	          if (url.indexOf('pikabu') != -1 && pikabu(data.gestures[g].name)){
 	              timeout = true;
-	          else if (url.indexOf('imgur') != -1 && imgur(data.gestures[g].name))
+	              setTimeout(clearTimeout, 1000);
+	              return;
+	          }
+	          else if (url.indexOf('imgur') != -1 && imgur(data.gestures[g].name)){
 	              timeout = true;
-	          else if (pickabu(data.gestures[g].name)) timeout = true;
-
-	          setTimeout("clearTimeout()", 1000);
+	              setTimeout(clearTimeout, 1000);
+	              return;
+	          }
+	          else if (pikabu(data.gestures[g].name)){
+	          	timeout = true;
+	          	setTimeout(clearTimeout, 1000);
+	          	return;
+	          }
 	      }
+
 	  };
 
-	  var clearTimeout = function() {
-	      timeout = false;
-	  };
+
 
 	  var onStatus = function(data) {
 	      if (data.sts < 0) {
