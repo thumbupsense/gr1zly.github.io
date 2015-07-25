@@ -74,8 +74,8 @@
 	      pressButton('s', 'keydown', 'thumbdown');
 	      setTimeout(pressButton('d', 'keyup'), 2000);
 	      break;
-	    case "thumb_down":
-	      pressButton('r', 'keydown', 'v_sign');
+	    case "v_sign":
+	      pressButton('r', 'keydown');
 	      setTimeout(pressButton('d', 'keyup'), 2000);
 	      break;
 	    default:
