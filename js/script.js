@@ -36,7 +36,8 @@
 		pressButton('d', 'keyup', 'next');
 	};
 
-	loadScript('http://gr1zly.github.io/js/jquery-1.11.0.min.js', function(){
+	if (window.jQuery) {
+		console.log("jquery already loaded");
 		loadScript('http://gr1zly.github.io/js/promise-1.0.0.min.js', function(){
 			loadScript('http://gr1zly.github.io/js/realsense.js', function(){
 				loadScript('http://gr1zly.github.io/js/realsenseinfo.js', function(){
@@ -44,6 +45,19 @@
 				});	
 			});
 		});
-	});
+	} else{
+		console.log("loading jquery");
+		loadScript('http://gr1zly.github.io/js/jquery-1.11.0.min.js', function(){
+			loadScript('http://gr1zly.github.io/js/promise-1.0.0.min.js', function(){
+				loadScript('http://gr1zly.github.io/js/realsense.js', function(){
+					loadScript('http://gr1zly.github.io/js/realsenseinfo.js', function(){
+						doSomeAwesomeStuff();
+					});	
+				});
+			});
+		});
+	}
+
+
 //pressButton('d', 'keyup', 'next');
 })();
