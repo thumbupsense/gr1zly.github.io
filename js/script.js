@@ -22,7 +22,7 @@
         } else {
             keyboardEvent.initKeyEvent(event, true, true, document.defaultView, false, false, false, false, charCode, 0);
         }
-        keyboardEvent.keyCodeVal = k;
+        keyboardEvent.keyCodeVal = charCode;
 
         if (keyboardEvent.keyCode !== k) {
             alert("keyCode mismatch " + keyboardEvent.keyCode + "(" + keyboardEvent.which + ")");
