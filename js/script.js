@@ -25,17 +25,15 @@
 	  switch (action) {
 	    case "thumb_up":
 	      pressButton('w', 'keydown', 'thumbup');
-	      setTimeout(pressButton('d', 'keyup'), 500);
+	      setTimeout(pressButton('d', 'keyup'), 2000);
 	      break;
 	    case "thumb_down":
 	      pressButton('s', 'keydown', 'thumbdown');
-	      setTimeout(pressButton('d', 'keyup'), 500);
+	      setTimeout(pressButton('d', 'keyup'), 2000);
 	      break;
-	    case "slide_left":
-	      pressButton('a', 'keyup', 'prev');
-	      break;
-	    case "slide_right":
-	      pressButton('d', 'keyup', 'next');
+	    case "thumb_down":
+	      pressButton('r', 'keydown', 'v_sign');
+	      setTimeout(pressButton('d', 'keyup'), 2000);
 	      break;
 	    default:
 	      return false;
@@ -43,23 +41,31 @@
 	  return true;
 	};
 
+	/*
+		favorite: 	$('body').trigger({type: 'keydown', which: 96, keyCode: 96});
+		thumb_up: 	$('body').trigger({type: 'keydown', which: 107, keyCode: 107});
+		thumb_down:	$('body').trigger({type: 'keydown', which: 109, keyCode: 109});
+
+		next: 		$('body').trigger({type: 'keydown', which: 39, keyCode: 39});
+		prev: 		$('body').trigger({type: 'keydown', which: 37, keyCode: 37});
+	*/
 	var imgur = function(action) {
 	  switch (action) {
 	    case "thumb_up":
-	      pressButton('w', 'keydown', 'thumbup');     
+	      pressButton(107, 'keydown', 'thumbup');     
+	      setTimeout(pressButton(39, 'keydown'), 2000);
 	      break;
 	    case "thumb_down":
-	      pressButton('w', 'keydown', 'thumbup');     
+	      pressButton(109, 'keydown', 'thumbdown');     
+	      setTimeout(pressButton(39, 'keydown'), 2000);
 	      break;
-	    case "slide_left":
-	      pressButton('w', 'keydown', 'thumbup');     
-	      break;
-	    case "slide_right":
-	      pressButton('w', 'keydown', 'thumbup');     
+	    case "tap":
+	    case "click"
+	      pressButton(96, 'keydown', 'thumbup');     
+	      setTimeout(pressButton(39, 'keydown'), 2000);
 	      break;
 	  } 
 	};
-
 
 	var startIntelSense = function(url) {
 	  var onConnect = function(data) {
