@@ -11,6 +11,122 @@
 		addNotification(image);
 	};
 
+	var pikabu = function(action) {
+	  switch (action) {
+	    case "thumb_up":
+	      pressButton('w', 'keydown', 'thumbup');
+	      break;
+	    case "thumb_down":
+	      pressButton('s', 'keydown', 'thumbdown');
+	      break;
+	    case "slide_left":
+	      pressButton('a', 'keyup', 'prev');
+	      break;
+	    case "slide_right":
+	      pressButton('d', 'keyup', 'next');
+	      break;
+	    default:
+	      return false;
+	  }
+	  return true;
+	};
+
+	var imgur = function(action) {
+	  switch (action) {
+	    case "thumb_up":
+	      pressButton('w', 'keydown', 'thumbup');     
+	      break;
+	    case "thumb_down":
+	      pressButton('w', 'keydown', 'thumbup');     
+	      break;
+	    case "slide_left":
+	      pressButton('w', 'keydown', 'thumbup');     
+	      break;
+	    case "slide_right":
+	      pressButton('w', 'keydown', 'thumbup');     
+	      break;
+	  } 
+	};
+
+
+	var startIntelSense = function(url) {
+	  var onConnect = function(data) {
+	      if (data.connected == false) {
+	          status('Alert: ' + JSON.stringify(data));
+	      }
+	  };
+
+	  var onHandData = function(mid, module, data) {
+	      for (var g = 0; g < data.gestures.length; g++) {
+	          if (timeout)
+	              return;
+
+	          status(data.gestures[g].name);
+
+	          if (url.indexOf('pickabu') != -1 && pickabu(data.gestures[g].name))
+	              timeout = true;
+	          else if (url.indexOf('imgur') != -1 && imgur(data.gestures[g].name))
+	              timeout = true;
+	          else if (pickabu(data.gestures[g].name)) timeout = true;
+
+	          setTimeout("clearTimeout()", 1000);
+	      }
+	  };
+
+	  var clearTimeout = function() {
+	      timeout = false;
+	  };
+
+	  var onStatus = function(data) {
+	      if (data.sts < 0) {
+	          status('Error ' + data.sts);
+	      }
+	  };
+
+	  var status = function(msg) {
+	     console.log(msg);
+	  }
+
+	  // check platform compatibility
+	  RealSenseInfo(['hand'], function (info) {
+	      if (info.IsReady == true) {
+	          status('Started...');
+	      } else {
+	          status('ERROR');
+	      }
+	  });
+
+	  PXCMSenseManager_CreateInstance().then(function (result) {
+	      sense = result;
+	      return sense.EnableHand(onHandData);
+	  }).then(function (result) {
+	      handModule = result;
+	      status('Init started...');
+	      return sense.Init(onConnect, onStatus);
+	  }).then(function (result) {
+	      return handModule.CreateActiveConfiguration();
+	  }).then(function (result) {
+	      handConfiguration = result;
+	      return handConfiguration.DisableAllAlerts();
+	  }).then(function (result) {
+	      return handConfiguration.EnableAllGestures(false);
+	  }).then(function (result) {
+	      return handConfiguration.ApplyChanges();
+	  }).then(function (result) {
+	      return sense.QueryCaptureManager();
+	  }).then(function (capture) {
+	      return capture.QueryImageSize(pxcmConst.PXCMCapture.STREAM_TYPE_DEPTH);
+	  }).then(function (result) {
+	      imageSize = result.size;
+	      return sense.StreamFrames();
+	  }).then(function (result) {
+	      status('Streaming ' + imageSize.width + 'x' + imageSize.height);
+	      document.getElementById("Stop").disabled = false;
+	  }).catch(function (error) {
+	      status('Init failed: ' + JSON.stringify(error));
+	  });
+	};
+
 	var addNotification = function(image){
 		if(image != null){
 			var thumb_up_div = document.createElement('div');
@@ -33,7 +149,8 @@
 
 	var doSomeAwesomeStuff = function(){
 		console.log("blah");
-		pressButton('d', 'keyup', 'next');
+		//pressButton('d', 'keyup', 'next');
+		startIntelSense(window.location.href);
 	};
 
 	if (window.jQuery) {
