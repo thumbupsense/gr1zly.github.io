@@ -1,0 +1,8 @@
+#thumb_up_div{
+    position:fixed;
+    top:100px;
+    left:30%;
+    width:400px;
+    height:400px;
+    display:block; 
+}
