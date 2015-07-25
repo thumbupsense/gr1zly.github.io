@@ -2,7 +2,7 @@
 
 	var pressButton = function(button, event, image){
 		var charCode = button.toUpperCase().charCodeAt(0);
-		console.log(charCode);
+		/*console.log(charCode);
 		var keyboardEvent = document.createEvent("KeyboardEvent");
 		
         Object.defineProperty(keyboardEvent, 'keyCode', {
@@ -28,7 +28,8 @@
             alert("keyCode mismatch " + keyboardEvent.keyCode + "(" + keyboardEvent.which + ")");
         }
 
-		document.dispatchEvent(keyboardEvent);
+		document.dispatchEvent(keyboardEvent);*/
+		$('body').trigger({type: event, which: charCode, keyCode: charCode});
 
 		addNotification(image);
 	};
