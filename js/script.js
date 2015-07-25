@@ -1,6 +1,6 @@
 (function(){
 
-	var loadCss = function{
+	var loadCss = function(){
 		var cssId = 'myCss';  // you could encode the css path itself to generate id..
 		if (!document.getElementById(cssId))
 		{

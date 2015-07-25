@@ -1,0 +1,18 @@
+#thumb_up_div{
+    position:fixed;
+    top:100px;
+    left:30%;
+    width:400px;
+    height:400px;
+    display:block;
+    -webkit-animation: fade-out 1s ease-in;
+    -webkit-animation-fill-mode: forwards;
+    -webkit-animation-iteration-count: 1;
+    opacity: 1;
+}
+
+@-webkit-keyframes fade-out {
+ 0% { opacity: 1;}
+ 100% { opacity: 0;}
+}
+
